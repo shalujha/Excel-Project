@@ -1,0 +1,130 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+.page-action-cont{
+    height: 3rem;
+    background-color: #125C13;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+.page-action{
+    color: white;
+    margin: 0.5rem;
+}
+.cell-action-cont{
+    height: 3rem;
+    background-color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.cell-action-cont>*{
+   margin: 0.5rem;
+}
+.cell-action-cont>select{
+    border: none;
+    outline: none;
+}
+.formula-action-cont{
+    height: 3rem;
+    background-color: #ecf0f1;
+    display: flex;
+    align-items: center;
+}
+.formula-action-cont>*{
+    margin: 0.5rem;
+    border: none;
+    outline: none;
+}
+.address-bar{
+    width: 4rem;
+    text-align: center;
+}
+.formula-icon{
+    width: 2rem;
+}
+.forula-bar{
+    width: calc(100vw - 4rem - 2rem);
+}
+
+.sheet-cont{
+    height: 3rem;
+    background-color: #ecf0f1;
+    display: flex;
+    align-items: center;
+}
+.grid-cont{
+    height: calc(100vh - 3rem - 3rem - 3rem - 3rem);
+    padding-top: 1rem;
+    overflow: scroll;
+    position: relative;
+}
+.cell-cont{
+    display: flex;
+    position: absolute;
+    top:1rem;
+    left:2rem;
+    background-color: #ecf0f1;
+}
+.sheet-add-icon{
+    display: inline-block;
+    margin-left: 1rem;
+}
+.sheet-folder-cont{
+    height: 2rem;
+    width: 100vw;
+    margin-left: 1rem;
+    margin-right:1rem ;
+    font-weight: bold;
+    text-decoration: underline;
+    display: flex;
+    align-items:center;
+    text-decoration-thickness: 3px;
+}
+.top-left-dummy{
+    width: 2rem;
+    height: 2rem;
+    background-color: gray;
+    position: fixed;
+    
+}
+.address-col-cont{
+    width: 2rem;
+    /* display: flex;
+    flex-direction: column; */
+    display: inline-block;
+    margin-top: 2rem;
+    
+}
+.address-col{
+display: flex;
+align-items: center;
+justify-content: center;
+border: 1px solid #dfe4ea;
+height: 2rem;
+width: 2rem;
+border: none;
+outline: none;
+}
+.address-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dfe4ea;
+    height: 2rem;
+    width: 7rem;
+}
+.address-row-cont{
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    background-color: #ecf0f1;
+    height: 2rem;
+    display: flex;
+}
