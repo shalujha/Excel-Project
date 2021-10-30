@@ -61,14 +61,13 @@ body{
 }
 .grid-cont{
     height: calc(100vh - 3rem - 3rem - 3rem - 3rem);
-    padding-top: 1rem;
     overflow: scroll;
     position: relative;
 }
 .cell-cont{
     display: flex;
     position: absolute;
-    top:1rem;
+    top:0;
     left:2rem;
     background-color: #ecf0f1;
 }
@@ -92,21 +91,25 @@ body{
     height: 2rem;
     background-color: gray;
     position: fixed;
-    
+    z-index: 3;
 }
 .address-col-cont{
-    width: 2rem;
+    
     /* display: flex;
     flex-direction: column; */
     display: inline-block;
-    margin-top: 2rem;
+    position:sticky;
+    top:2rem;
+    left:0;
+    /* position: fixed;
+    margin-top: 2rem; */
     
 }
 .address-col{
 display: flex;
 align-items: center;
 justify-content: center;
-border: 1px solid #dfe4ea;
+border: 2px solid #dfe4ea;
 height: 2rem;
 width: 2rem;
 border: none;
@@ -119,11 +122,12 @@ outline: none;
     border: 1px solid #dfe4ea;
     height: 2rem;
     width: 7rem;
+    position: sticky;
 }
 .address-row-cont{
     position: absolute;
     top: 0;
-    left: 2rem;
+    left: 0;
     background-color: #ecf0f1;
     height: 2rem;
     display: flex;
