@@ -1,4 +1,5 @@
 let sheetDB=[];
+let formulaBar=document.querySelector(".forula-bar");
 for(var i=0;i<rows;i++){
     let sheetRow=[];
     for(var j=0;j<cols;j++){
@@ -11,6 +12,9 @@ for(var i=0;i<rows;i++){
            "fontSize":14,
            "fontColor":"#000000",
            "backgroundColor":"#000000",
+           "value":"",
+           "formula":"",
+           "children":[],
        }
 
        
@@ -44,8 +48,8 @@ function fetchPropertiesListener(rowId,colId){
     let address=[rowId,colId];
     let activeCell=getActiveCell(address);
     let cell=getCellProperties(address);
-    console.log("within fetchProperties listener");
-    console.log("address");
+    // console.log("within fetchProperties listener");
+    // console.log("address");
     activeCell.addEventListener("click",()=>{
        bold.style.backgroundColor=cell.bold?activeColorProp:inactiveColorProp;
        underlined.style.backgroundColor=cell.underlined?activeColorProp:inactiveColorProp;
@@ -57,6 +61,7 @@ function fetchPropertiesListener(rowId,colId){
        centerAligned.style.backgroundColor=cell.alignment=="center"?activeColorProp:inactiveColorProp;  
        textColor.value=cell.fontColor;
        backgroundColor.value=cell.backgroundColor;
+       formulaBar.value=cell.formula;
     })
 }
 
@@ -91,7 +96,7 @@ textColor.addEventListener("change",()=>{
     let cell=getActiveCell(address);
     let cellProperties=getCellProperties(address);
     cellProperties.fontColor=textColor.value;
-    console.log("value : "+textColor.value);
+//    console.log("value : "+textColor.value);
     cell.style.color=cellProperties.fontColor;
     textColor.value=cellProperties.fontColor;
 });
@@ -100,7 +105,7 @@ backgroundColor.addEventListener("change",()=>{
     let cell=getActiveCell(address);
     let cellProperties=getCellProperties(address);
     cellProperties.backgroundColor=backgroundColor.value;
-    console.log("value : "+textColor.value);
+//    console.log("value : "+textColor.value);
     cell.style.backgroundColor=cellProperties.backgroundColor;
     backgroundColor.value=cellProperties.backgroundColor;
 });
@@ -109,7 +114,7 @@ fontSize.addEventListener("change",()=>{
     let cell=getActiveCell(address);
     let cellProperties=getCellProperties(address);
     cellProperties.fontSize=fontSize.value;
-    console.log("siz is : "+ fontSize.value);
+//    console.log("siz is : "+ fontSize.value);
     cell.style.fontSize=cellProperties.fontSize+"px";
     fontSize.value=cellProperties.fontSize;
 });
@@ -119,7 +124,7 @@ fontFamily.addEventListener("change",()=>{
     let cell=getActiveCell(address);
     let cellProperties=getCellProperties(address);
     cellProperties.fontFamily=fontFamily.value;
-    console.log("font family is : "+ fontFamily.value);
+  //  console.log("font family is : "+ fontFamily.value);
     cell.style.fontFamily=cellProperties.fontFamily;
     fontFamily.value=cellProperties.fontFamily;
 });
@@ -130,21 +135,21 @@ alignments.forEach(element=>{
     let cell=getActiveCell(address);
     let cellProperties=getCellProperties(address);
         let typeOfAlignment=element.classList[0];
-        console.log("type of alignment : "+ typeOfAlignment);
+     //   console.log("type of alignment : "+ typeOfAlignment);
         cellProperties.alignment=typeOfAlignment;
-        console.log("cellproperties ka alignment : "+cellProperties.alignment);
+       // console.log("cellproperties ka alignment : "+cellProperties.alignment);
         cell.style.textAlign=cellProperties.alignment;
         // console.log("cell styles : "+ cell.style);
         // console.log(cell.style.textAlign);
          switch(typeOfAlignment){
              case "left":
-                 console.log("left kr");
+         //        console.log("left kr");
                 leftAligned.style.backgroundColor=cellProperties.alignment?activeColorProp:inactiveColorProp;
                 rightAligned.style.backgroundColor=inactiveColorProp;
                 centerAligned.style.backgroundColor=inactiveColorProp;
                 break;
              case "right":
-                 console.log("right clicked");
+           //      console.log("right clicked");
                 // cellProperties.alignment=!cellProperties.alignment;
                 // console.log("cellproperties ka alignment : "+cellProperties.alignment);
                 // cell.style.textAlign=cellProperties.alignment?"right":"initial";
@@ -153,7 +158,7 @@ alignments.forEach(element=>{
                 centerAligned.style.backgroundColor=inactiveColorProp;
                  break;
              case "center":
-                 console.log("center clicked");
+             //    console.log("center clicked");
                 // cellProperties.alignment=!cellProperties.alignment;
                 // console.log("cellproperties ka alignment : "+cellProperties.alignment);
                 // cell.style.textAlign=cellProperties.alignment?"center":"initial";
@@ -163,21 +168,18 @@ alignments.forEach(element=>{
                  break;
          }
     })
-    
-
-
 })
 
-
-
-
-
 function getAddress(){
+    console.log("getAddress called ");
     var address=AddressBar.value;
-    console.log("address is : "+ address);
+    // console.log("address is : "+ address);
     var colId=Number(address.charCodeAt(0)-65);
     var rowId=Number(address.slice(1))-1;
-    return [rowId,colId];
+    let ans=[rowId,colId];
+    console.log("ans : ");
+    console.log(ans);
+    return ans;
 }
 
 function getActiveCell(address){
@@ -187,10 +189,12 @@ function getActiveCell(address){
 }
 
 function getCellProperties(address){
+ //   console.log("within getCellProp ");
+ //   console.log("address : "+ address);
     let rowId=address[0];
     let colId=address[1];
-    console.log(address);
-
+   // console.log("rowId is : "+ rowId+" col id is : "+ colId);
+  //  console.log(address);
     return sheetDB[rowId][colId];
 }
 

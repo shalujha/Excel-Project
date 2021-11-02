@@ -48,13 +48,12 @@ for(var i=0;i<rows;i++){
 }
 function addListenerForAddressBar(cell,i,j){
     cell.addEventListener("click",()=>{
-        console.log("clicked");
+      //  console.log("clicked");
         let colId=String.fromCharCode(65+j);
         let rowId=i+1;
         AddressBar.value=colId+""+rowId;
     })
 }
-
 // click first cell
 let firstcell=document.querySelector(".cell");
 firstcell.click();
