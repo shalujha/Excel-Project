@@ -46,6 +46,13 @@ formulaBar.addEventListener("keydown",(e)=>{
         removeParentChildRelationShips(cellProp.formula);
         cellProp.formula=formula;
         console.log("address jo diya hai : "+ address);
+
+        addToGraphMatrix(formula,address);
+        if(isCyclic()){
+            alert("sorry ! equation is cyclic ");
+            removeFromGraphMatrix(formula,address);
+            return;
+        }
         let ans=evaluate(formula,address);
         setUIandDB(ans,cell,cellProp);
         updateChildren(address);
@@ -55,6 +62,38 @@ formulaBar.addEventListener("keydown",(e)=>{
     }
 })
 
+
+function addToGraphMatrix(formula,address){
+    let crid=address[0];
+    let ccid=address[1];
+    let formulaValues=formula.split(" ");
+    for(var i=0;i<formulaValues.length;i++){
+        if(formulaValues[i].length==0){
+            continue;
+        }
+        var ascii=formulaValues[i].trim().charCodeAt(0);
+        if(ascii>=65 && ascii<=90){
+            var ParentsRowId=Number(formulaValues[i].slice(1))-1;
+            var ParentsColId=Number(formulaValues[i].charCodeAt(0)-65);
+            graphComponentMatrix[ParentsRowId][ParentsColId].push([crid,ccid]);
+        }
+    }
+}
+
+function removeFromGraphMatrix(formula,address){
+    let formulaValues=formula.split(" ");
+    for(var i=0;i<formulaValues.length;i++){
+        if(formulaValues[i].length==0){
+            continue;
+        }
+        var ascii=formulaValues[i].trim().charCodeAt(0);
+        if(ascii>=65 && ascii<=90){
+            var ParentsRowId=Number(formulaValues[i].slice(1))-1;
+            var ParentsColId=Number(formulaValues[i].charCodeAt(0)-65);
+            graphComponentMatrix[ParentsRowId][ParentsColId].pop();
+        }
+    }
+}
 function removeParentChildRelationShips(formula){
    // console.log("remove PC Relationships ke andar ");
     let childcelladdress=getAddress();
