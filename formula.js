@@ -32,7 +32,7 @@ function addBlurListener(cell,cellProp){
     })
 }
 // get Access to formula bar first:
-formulaBar.addEventListener("keydown",(e)=>{
+formulaBar.addEventListener("keydown",async (e)=>{
     if(e.key=="Enter" && formulaBar.value.length>0){
     //    console.log("formulabar activated");
         // fetch the formula from formula bar
@@ -48,8 +48,13 @@ formulaBar.addEventListener("keydown",(e)=>{
         console.log("address jo diya hai : "+ address);
 
         addToGraphMatrix(formula,address);
-        if(isCyclic()){
-            alert("sorry ! equation is cyclic ");
+        let cyclicResponse=isCyclic();
+        if(cyclicResponse){
+            let response=confirm("you have entered a cyclic formula, Do you want to trace the cycle ?");
+            while(response){
+              await traceCycle(cyclicResponse,graphComponentMatrix);
+              response=confirm("you have entered a cyclic formula, Do you want to trace the cycle ?");
+            }
             removeFromGraphMatrix(formula,address);
             return;
         }

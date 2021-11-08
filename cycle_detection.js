@@ -26,7 +26,7 @@ function isCyclic(){
             if(!visited[i][j]){
                 let response=dfsCycleDetection(graphComponentMatrix,i,j,visited,dfsVisited);
                 if(response){
-                    return true;
+                    return [i,j];
                 }
             }
         }
