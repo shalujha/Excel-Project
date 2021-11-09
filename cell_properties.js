@@ -1,27 +1,36 @@
-let sheetDB=[];
 let formulaBar=document.querySelector(".forula-bar");
-for(var i=0;i<rows;i++){
-    let sheetRow=[];
-    for(var j=0;j<cols;j++){
-       var cell={
-           "bold":false,
-           "italic":false,
-           "underlined":false,
-           "alignment":false,
-           "fontFamily":"monospace",
-           "fontSize":14,
-           "fontColor":"#000000",
-           "backgroundColor":"#000000",
-           "value":"",
-           "formula":"",
-           "children":[],
-       }
+
+
+// for(var i=0;i<rows;i++){
+//     let sheetRow=[];
+//     for(var j=0;j<cols;j++){
+//        var cell={
+//            "bold":false,
+//            "italic":false,
+//            "underlined":false,
+//            "alignment":false,
+//            "fontFamily":"monospace",
+//            "fontSize":14,
+//            "fontColor":"#000000",
+//            "backgroundColor":"#000000",
+//            "value":"",
+//            "formula":"",
+//            "children":[],
+//        }
 
        
-       sheetRow.push(cell);
-    }
-    sheetDB.push(sheetRow);
+//        sheetRow.push(cell);
+//     }
+//     sheetDB.push(sheetRow);
+// }
+
+{
+    addBtn.click();
 }
+
+
+// console.log("within cellProperties, sheetDB is : ");
+// console.log(sheetDB);
 
 for(var i=0;i<rows;i++){
     for(var j=0;j<cols;j++){
@@ -47,10 +56,13 @@ let inactiveColorProp="#ecf0f1";
 function fetchPropertiesListener(rowId,colId){
     let address=[rowId,colId];
     let activeCell=getActiveCell(address);
-    let cell=getCellProperties(address);
-    // console.log("within fetchProperties listener");
+    
+    //console.log("within fetchProperties listener");
     // console.log("address");
     activeCell.addEventListener("click",()=>{
+    let cell=getCellProperties([activeCell.getAttribute("rowId"),activeCell.getAttribute("colId")]);
+      // console.log("within fetchProperties listener");
+      // console.log(cell);
        bold.style.backgroundColor=cell.bold?activeColorProp:inactiveColorProp;
        underlined.style.backgroundColor=cell.underlined?activeColorProp:inactiveColorProp;
        italic.style.backgroundColor=cell.italic?activeColorProp:inactiveColorProp;
@@ -62,6 +74,7 @@ function fetchPropertiesListener(rowId,colId){
        textColor.value=cell.fontColor;
        backgroundColor.value=cell.backgroundColor;
        formulaBar.value=cell.formula;
+       activeCell.innerText=cell.value;
     })
 }
 
@@ -171,23 +184,21 @@ alignments.forEach(element=>{
 })
 
 function getAddress(){
-    console.log("getAddress called ");
+   // console.log("getAddress called ");
     var address=AddressBar.value;
     // console.log("address is : "+ address);
     var colId=Number(address.charCodeAt(0)-65);
     var rowId=Number(address.slice(1))-1;
     let ans=[rowId,colId];
-    console.log("ans : ");
-    console.log(ans);
+  //  console.log("ans : ");
+ //   console.log(ans);
     return ans;
 }
-
 function getActiveCell(address){
     let rowId=address[0];
     let colId=address[1];
     return document.querySelector(`.cell[rowId="${rowId}"][colId="${colId}"]`);
 }
-
 function getCellProperties(address){
  //   console.log("within getCellProp ");
  //   console.log("address : "+ address);

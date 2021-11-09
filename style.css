@@ -27,6 +27,7 @@ body{
 
 .cell-action-cont>*{
    margin: 0.5rem;
+   cursor: pointer;
 }
 .cell-action-cont>select{
     border: none;
@@ -74,6 +75,7 @@ body{
 .sheet-add-icon{
     display: inline-block;
     margin-left: 1rem;
+    cursor: pointer;
 }
 .sheet-folder-cont{
     height: 2rem;
@@ -84,7 +86,12 @@ body{
     text-decoration: underline;
     display: flex;
     align-items:center;
+    overflow: auto;
     text-decoration-thickness: 3px;
+    cursor: pointer;
+}
+.sheet-content{
+    margin: 1rem;
 }
 .top-left-dummy{
     width: 2rem;
@@ -122,11 +129,8 @@ outline: none;
     border: 1px solid #dfe4ea;
     height: 2rem;
     width: 7rem;
-
 }
 .cell{
-   
-   
     border: 1px solid #dfe4ea;
     height: 2rem;
     width: 7rem;
@@ -154,4 +158,7 @@ outline: none;
 }
 .color-prop{
     position: relative;
+}
+.color-prop>*{
+    cursor: pointer;
 }

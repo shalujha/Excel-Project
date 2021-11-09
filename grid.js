@@ -11,7 +11,7 @@ for(var i=0;i<rows;i++){
     address_col_container.appendChild(address_col);
 }
 
-for(var i=0;i<cols;i++){
+for(i=0;i<cols;i++){
     let address_row=document.createElement("div");
     address_row.setAttribute("class","address-row");
     address_row.innerText=String.fromCharCode(65+i);
@@ -31,7 +31,7 @@ for(var i=0;i<cols;i++){
 //     }
 //     cell_cont.appendChild(row_cont);
 // }
-for(var i=0;i<rows;i++){
+for(i=0;i<rows;i++){
     let row_cont=document.createElement("div");
     row_cont.setAttribute("class", "row-cont");
     for(var j=0;j<cols;j++){
@@ -54,6 +54,4 @@ function addListenerForAddressBar(cell,i,j){
         AddressBar.value=colId+""+rowId;
     })
 }
-// click first cell
-let firstcell=document.querySelector(".cell");
-firstcell.click();
+

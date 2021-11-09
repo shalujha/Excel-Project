@@ -1,19 +1,19 @@
-let graphComponentMatrix=[];
-for(var i=0;i<rows;i++){
-    graphComponentMatrix.push([]);
-    for(var j=0;j<cols;j++){
-        graphComponentMatrix[i].push([]);
-    }
-}
+
+// for(var i=0;i<rows;i++){
+//     graphComponentMatrix.push([]);
+//     for(var j=0;j<cols;j++){
+//         graphComponentMatrix[i].push([]);
+//     }
+// }
 
 
 function isCyclic(){
     let visited=[];
     let dfsVisited=[];
-    for(i=0;i<rows;i++){
-        visitedRow=[];
-        dfsVisitedRow=[];
-        for(j=0;j<cols;j++){
+    for(var i=0;i<rows;i++){
+        let visitedRow=[];
+        let dfsVisitedRow=[];
+        for(var j=0;j<cols;j++){
             visitedRow.push(false);
             dfsVisitedRow.push(false);
         }
@@ -21,8 +21,8 @@ function isCyclic(){
         dfsVisited.push(dfsVisitedRow);
     }
 
-    for(i=0;i<rows;i++){
-        for(j=0;j<cols;j++){
+    for(var i=0;i<rows;i++){
+        for(var j=0;j<cols;j++){
             if(!visited[i][j]){
                 let response=dfsCycleDetection(graphComponentMatrix,i,j,visited,dfsVisited);
                 if(response){
@@ -40,7 +40,7 @@ function dfsCycleDetection(graphComponentMatrix,sr,sc,visited,dfsVisited){
     visited[sr][sc]=true;
 
     let children=graphComponentMatrix[sr][sc];
-    for(i=0;i<children.length;i++){
+    for(var i=0;i<children.length;i++){
         var crid=children[i][0];
         var ccid=children[i][1];
         if(!visited[crid][ccid]){

@@ -7,13 +7,17 @@ for(var i=0;i<rows;i++){
        addBlurListener(cell,cellProp,[i,j]);
     }
 }
-function addBlurListener(cell,cellProp){
+function addBlurListener(cell){
     cell.addEventListener("blur",(e)=>{
      //   console.log("within blur listener ");
+     let cellProp=getCellProperties([cell.getAttribute("rowId"),cell.getAttribute("colId")]);
         if(cellProp.value!=cell.innerText){
             cellProp.value=cell.innerText;
-          //  console.log("blur event occured");
-            
+            // console.log("blur event occured");
+            // console.log("sheetDB is ");
+            // console.log(sheetDB);
+            // console.log("combinedsheetDB is : ");
+            // console.log(combinedSheetsDB);
           let address=[cell.getAttribute("rowId"),cell.getAttribute("colId")];
         //   console.log("jo address aya wo h");
         //   console.log(address)
@@ -121,8 +125,8 @@ function removeParentChildRelationShips(formula){
            parentCellProp.children.splice(idx,1);
         }
     } 
-    console.log("sheetdb is ");
-    console.log(sheetDB);
+    // console.log("sheetdb is ");
+    // console.log(sheetDB);
 }
 
 
