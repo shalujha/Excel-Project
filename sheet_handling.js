@@ -95,7 +95,7 @@ function createSheetDB() {
         fontFamily: "monospace",
         fontSize: 14,
         fontColor: "#000000",
-        backgroundColor: "#000000",
+        backgroundColor: "transparent",
         value: "",
         formula: "",
         children: [],

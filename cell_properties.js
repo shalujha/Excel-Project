@@ -60,6 +60,7 @@ function fetchPropertiesListener(rowId,colId){
     //console.log("within fetchProperties listener");
     // console.log("address");
     activeCell.addEventListener("click",()=>{
+        console.log("syyling change krne aye ");
     let cell=getCellProperties([activeCell.getAttribute("rowId"),activeCell.getAttribute("colId")]);
       // console.log("within fetchProperties listener");
       // console.log(cell);
