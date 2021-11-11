@@ -9,12 +9,23 @@ body{
     height: 3rem;
     background-color: #125C13;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     padding-left: 1rem;
 }
 .page-action{
-    color: white;
-    margin: 0.5rem;
+    color: #ecf0f1;
+    margin-right: 1rem;
+}
+
+.selected-action-prop{
+    width: 2.5rem;
+    height:1.5rem;
+    margin-right: 1rem;
+    background-color: #ecf0f1;
+    color:black;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 .cell-action-cont{
     height: 3rem;
@@ -162,3 +173,4 @@ outline: none;
 .color-prop>*{
     cursor: pointer;
 }
+

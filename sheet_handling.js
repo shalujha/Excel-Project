@@ -17,6 +17,7 @@ addBtn.addEventListener("click", (e) => {
   handleSheetProprties(sheet);
   handleSheetRemoval(sheet);
   sheet.click();
+  sheet.scrollIntoView();
 });
 
 
