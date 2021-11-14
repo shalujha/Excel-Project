@@ -60,6 +60,7 @@ formulaBar.addEventListener("keydown",async (e)=>{
               response=confirm("you have entered a cyclic formula, Do you want to trace the cycle ?");
             }
             removeFromGraphMatrix(formula,address);
+            cellProp.formula="";
             return;
         }
         let ans=evaluate(formula,address);

@@ -8,7 +8,14 @@ download.addEventListener("click",(e)=>{
     const a = document.createElement("a");
     a.href = URL.createObjectURL(file);
     let sheetsArray = document.querySelectorAll(".sheet-content");
-    a.download = `Sheet${sheetsArray.length}.json`;
+    let sheetIdx;
+    for(var i=0;i<sheetsArray.length;i++){
+        if(sheetsArray[i].style.backgroundColor!="transparent"){
+            sheetIdx=i+1;
+            break;
+        }
+    }
+    a.download = `Sheet${sheetIdx}.json`;
     a.click();
 })
 

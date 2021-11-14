@@ -59,7 +59,7 @@ function handleSheetActiveness(sheet){
 function handleSheetProprties(sheet){
     sheet.addEventListener("click",(e)=>{
        let sheetIdx=sheet.getAttribute("id");
-      //console.log("sheet got clicked and id is : "+ sheetIdx);
+      console.log("sheet got clicked and id is : "+ sheetIdx);
       sheetDB=combinedSheetsDB[sheetIdx];
     //   console.log("combinedsheetDB is : ");
     //   console.log(combinedSheetsDB);
@@ -80,8 +80,8 @@ function handleCellProperties(sheet){
     // click first cell
   let firstcell=document.querySelector(".cell");
   firstcell.click();
- // console.log("in handlingcellproperties...sheetDB in use is ");
- // console.log(sheetDB);
+  console.log("in handlingcellproperties...sheetDB in use is ");
+  console.log(sheetDB);
 }
 function createSheetDB() {
   let sheetDBElement = [];

@@ -152,6 +152,8 @@ cut.addEventListener("click",(e)=>{
              targetCellProp.textColor="#000000";
              targetCellProp.backgroundColor="transparent";
              targetCellProp.value="";
+             targetCellProp.formula="";
+             cell.style.border="2px solid #dfe4ea";
              setCellProperties(cell,targetCellProp);
         }
     }
