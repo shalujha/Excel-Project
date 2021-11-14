@@ -100,6 +100,7 @@ function createSheetDB() {
         value: "",
         formula: "",
         children: [],
+        border:"1px solid #dfe4ea"
       };
       sheetRow.push(cell);
     }

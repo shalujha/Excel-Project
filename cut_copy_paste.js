@@ -34,6 +34,8 @@ function AddSelectListener(cell){
         cell.style.border="3px solid #218c74";
         let rowId=cell.getAttribute("rowId");
         let colId=cell.getAttribute("colId");
+        let cellProp=getCellProperties([rowId,colId]);
+        cellProp.border="3px solid #218c74";
         rangeOfSelection.push([rowId,colId]);
     })
 };
@@ -43,7 +45,9 @@ function SetUiToDefault(){
         let rowId=rangeOfSelection[i][0];
         let colId=rangeOfSelection[i][1];
         let cell=document.querySelector(`.cell[rowId="${rowId}"][colId="${colId}"]`);
-        cell.style.border="lightgray";
+        cell.style.border="1px solid #dfe4ea";
+        let cellProp=getCellProperties([rowId,colId]);
+        cellProp.border="1px solid #dfe4ea";
     }
 }
 
@@ -105,7 +109,7 @@ paste.addEventListener("click",(e)=>{
              targetCellProp.fontFamily=copyCellProp.fontFamily;
              targetCellProp.fontSize=copyCellProp.fontSize;
              targetCellProp.alignment=copyCellProp.alignment;
-             targetCellProp.textColor=copyCellProp.textColor;
+             targetCellProp.fontColor=copyCellProp.fontColor;
              targetCellProp.backgroundColor=copyCellProp.backgroundColor;
              targetCellProp.value=copyCellProp.value;
              console.log("source")
@@ -149,11 +153,11 @@ cut.addEventListener("click",(e)=>{
              targetCellProp.fontFamily="monospace";
              targetCellProp.fontSize=14;
              targetCellProp.alignment=false;
-             targetCellProp.textColor="#000000";
+             targetCellProp.fontColor="#000000";
              targetCellProp.backgroundColor="transparent";
              targetCellProp.value="";
              targetCellProp.formula="";
-             cell.style.border="2px solid #dfe4ea";
+             cell.style.border="1px solid #dfe4ea";
              setCellProperties(cell,targetCellProp);
         }
     }

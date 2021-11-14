@@ -13,7 +13,7 @@ function addBlurListener(cell){
      let cellProp=getCellProperties([cell.getAttribute("rowId"),cell.getAttribute("colId")]);
         if(cellProp.value!=cell.innerText){
             cellProp.value=cell.innerText;
-            // console.log("blur event occured");
+             console.log("blur event occured");
             // console.log("sheetDB is ");
             // console.log(sheetDB);
             // console.log("combinedsheetDB is : ");
@@ -153,8 +153,8 @@ function updateChildren(parentAddress){
 }
 
 function setUIandDB(val,cell,cellProp){
-    cell.innerText=val;
-    cellProp.value=val;
+      cell.innerText=val;
+      cellProp.value=val;
 }
 function getCellandCellProp(address){
  //   console.log("within getCellAndProperties ");
@@ -183,16 +183,17 @@ function evaluate(formula,childcelladdress){
                 addChildToParentProp(formulaValues[i].trim(),childcelladdress);
             }
             
-            formulaValues[i]=getValueFromAddress(formulaValues[i].trim());
-         //   console.log("within ascii wala if ");
+            let val=getValueFromAddress(formulaValues[i].trim());
+            console.log("within ascii wala if ");
+            formulaValues[i]=val.length==0?0:val;
             console.log(formulaValues[i]);
-            
+            console.log("aya ");
         }
     }
     var expression=formulaValues.join(" ");
   //  console.log("expression is : "+ expression);
     var ans= eval(expression);
-  //  console.log(" ans is : "+ ans);
+    console.log(" ans is : "+ ans);
     return ans;
 }
 

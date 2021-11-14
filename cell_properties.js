@@ -77,7 +77,7 @@ function fetchPropertiesListener(rowId,colId){
        formulaBar.value=cell.formula;
        activeCell.innerText=cell.value;
        activeCell.style.backgroundColor=cell.backgroundColor;
-    
+       activeCell.style.border=cell.border;
     })
 }
 
