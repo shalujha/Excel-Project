@@ -74,14 +74,72 @@ body{
 }
 .grid-cont{
     height: calc(100vh - 3rem - 3rem - 3rem - 3rem);
+    width: calc(100vw - 2rem);
     overflow: scroll;
     position: relative;
+   
 }
 .cell-cont{
     position: absolute;
     top:0;
     left:2rem;
     background-color: #ecf0f1;
+}
+.top-left-dummy{
+    width: 2rem;
+    height: 2rem;
+    background-color: gray;
+    position: fixed;
+    z-index: 3;
+}
+.address-col-cont{
+    
+    /* display: flex; */
+
+    /* display: inline-block; */
+    
+    position:sticky;
+    top:2rem;
+    left:0;
+    /* position: fixed;
+    margin-top: 2rem; */
+    
+}
+.address-col{
+display: flex;
+align-items: center;
+justify-content: center;
+border: 2px solid #dfe4ea;
+height: 2rem;
+width: 2rem;
+outline: none;
+}
+.address-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dfe4ea;
+    height: 2rem;
+    width: 7rem;
+}
+.cell{
+    border: 1px solid #dfe4ea;
+    height: 2rem;
+    width: 7rem;
+}
+.row-cont{
+    display: flex;
+    /* background-color: aqua;
+    border: 2px solid blueviolet; */
+}
+.address-row-cont{
+    display: flex;
+    position: sticky;
+    top: 0;
+    left: 2rem;
+    background-color: #ecf0f1;
+    
+    display: flex;
 }
 .sheet-add-icon{
     display: inline-block;
@@ -104,61 +162,7 @@ body{
 .sheet-content{
     margin: 1rem;
 }
-.top-left-dummy{
-    width: 2rem;
-    height: 2rem;
-    background-color: gray;
-    position: fixed;
-    z-index: 3;
-}
-.address-col-cont{
-    
-    /* display: flex;
-    flex-direction: column; */
-    display: inline-block;
-    position:sticky;
-    top:2rem;
-    left:0;
-    /* position: fixed;
-    margin-top: 2rem; */
-    
-}
-.address-col{
-display: flex;
-align-items: center;
-justify-content: center;
-border: 2px solid #dfe4ea;
-height: 2rem;
-width: 2rem;
-border: none;
-outline: none;
-}
-.address-row{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #dfe4ea;
-    height: 2rem;
-    width: 7rem;
-}
-.cell{
-    border: 1px solid #dfe4ea;
-    height: 2rem;
-    width: 7rem;
-}
-.row-cont{
-    display: flex;
-    /* background-color: aqua;
-    border: 2px solid blueviolet; */
-}
-.address-row-cont{
-    position: sticky;
-    top: 0;
-    left: 0;
-    background-color: #ecf0f1;
-    height: 2rem;
-    display: flex;
-}
+
 .color-prop>input{
     opacity: 0;
     position: absolute;

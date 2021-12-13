@@ -1,18 +1,13 @@
 let cut=document.querySelector(".cut");
 let copy=document.querySelector(".copy");
 let paste=document.querySelector(".paste");
-
 let ctrlIsPressed;
-
 document.addEventListener("keydown",(e)=>{
     ctrlIsPressed=e.ctrlKey;
 });
-
 document.addEventListener("keyup",(e)=>{
     ctrlIsPressed=e.ctrlKey;
 });
-
-
 for(var i=0;i<rows;i++){
     for(var j=0;j<cols;j++){
         let cell=document.querySelector(`.cell[rowId="${i}"][colId="${j}"]`);
@@ -57,6 +52,7 @@ copy.addEventListener("click",(e)=>{
     if(rangeOfSelection.length!=2){
         return;
     }
+    console.log("copy clicked");
     console.log("rangeOfSelection is : ");
     console.log(rangeOfSelection);
     copy_data=[];
@@ -64,10 +60,11 @@ copy.addEventListener("click",(e)=>{
     let endRow=rangeOfSelection[1][0];
     let startCol=rangeOfSelection[0][1];
     let endCol=rangeOfSelection[1][1];
-    console.log("startRow : "+ startRow +" startCol is : "+ startCol+" endRow : "+ endRow +" endCol is : "+ endCol);
+   // console.log("startRow : "+ startRow +" startCol is : "+ startCol+" endRow : "+ endRow +" endCol is : "+ endCol);
     for(i=startRow;i<=endRow;i++){
         let copyRow=[];
         for(j=startCol;j<=endCol;j++){
+            console.log(sheetDB[i][j]);
             copyRow.push(sheetDB[i][j]);
         }
         copy_data.push(copyRow);
@@ -78,13 +75,14 @@ copy.addEventListener("click",(e)=>{
 // console.log("copied data : ");
 // console.log(copy_data);
 paste.addEventListener("click",(e)=>{
+    if(rangeOfSelection.length!=2){
+        return;
+    }
     console.log("paste clicked");
     console.log("rangeOfSelection is : ");
     console.log(rangeOfSelection.length);
     console.log(copy_data.length);
-     if(copy_data.length==0 || rangeOfSelection.length!=2){
-         return
-     }
+     
      console.log("paste krne aye ");
      let address=getAddress();
      let startRow=rangeOfSelection[0][0];
@@ -137,14 +135,17 @@ function setCellProperties(cell,cellProperties){
 }
 
 
-cut.addEventListener("click",(e)=>{
+cut.addEventListener("click",async (e)=>{
+   copy_data=[];
     console.log("came in cut ");
     let startRow=rangeOfSelection[0][0];
     let endRow=rangeOfSelection[1][0];
     let startCol=rangeOfSelection[0][1];
     let endCol=rangeOfSelection[1][1];
     for(i=startRow;i<=endRow;i++){
+        copy_row=[];
         for(j=startCol;j<=endCol;j++){
+            copy_row.push({...sheetDB[i][j]});
             let cell=document.querySelector(`.cell[rowId="${i}"][colId="${j}"]`);
             let targetCellProp=sheetDB[i][j];
             targetCellProp.bold=false;
@@ -160,9 +161,12 @@ cut.addEventListener("click",(e)=>{
              cell.style.border="1px solid #dfe4ea";
              setCellProperties(cell,targetCellProp);
         }
+        copy_data.push(copy_row);
     }
              SetUiToDefault();
-             rangeOfSelection=[];
+             console.log("data copied");
+             console.log(copy_data);
+         //    rangeOfSelection=[];
 });
 
 
